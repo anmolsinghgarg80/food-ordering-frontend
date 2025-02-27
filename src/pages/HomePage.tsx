@@ -1,4 +1,4 @@
-import appDownload from '../assets/appdownload.png'
+import appDownload from '../assets/appDownload.png'
 import landingImage from '../assets/landing.png'
 
 function HomePage() {
