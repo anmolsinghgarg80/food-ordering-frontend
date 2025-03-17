@@ -8,14 +8,22 @@ import { Button } from "./ui/button";
 export default function UsernameMenu() {
   const { user, logout } = useAuth0();
   return (
-    <div>
+    <div >
       <DropdownMenu>
         <DropdownMenuTrigger className = "flex items-center px-3 font-bold hover:text-orange-500 gap-2">
           <CircleUserRound className="text-orange-500"/>
           {user?.email}
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-48">
+        <DropdownMenuContent className="w-48 space-y-2 mt-3 pt-2">
 
+          <DropdownMenuItem>
+          <Link to="/manage-restaurant"
+            className="font-bold hover:text-orange-500"
+          >
+            Manage Restaurant
+          </Link>
+          </DropdownMenuItem>
+          
           <DropdownMenuItem>
           <Link to="/user-profile"
             className="font-bold hover:text-orange-500"
