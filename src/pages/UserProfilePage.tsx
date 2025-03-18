@@ -1,20 +1,28 @@
-import { useGetMyUser, useUpdateMyUser } from '@/api/MyUserApi';
-import UserProfileForm from '@/forms/user-profile-form/UserProfileForm'
+import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi";
+import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function UserProfilePage() {
-  const {currentUser, isLoading: isGetLoading} = useGetMyUser();
-  const {updateUser, isLoading: isUpdateLoading} = useUpdateMyUser();
+  const { currentUser, isLoading: isGetLoading } = useGetMyUser();
+  const { updateUser, isLoading: isUpdateLoading } = useUpdateMyUser();
 
-  if(isGetLoading) {
-    return <span> Loading... ho raha babu </span >;
+  if (isGetLoading) {
+    return (
+      <span>
+        <Skeleton className="w-[100px] h-[20px] rounded-full" />
+      </span>
+    );
   }
-  if(!currentUser){
-    return <span>Unable to load user profile</span>
+  if (!currentUser) {
+    return <span>Unable to load user profile</span>;
   }
-  return <UserProfileForm 
-   currentUser = {currentUser}
-   onSave={updateUser}
-   isLoading={isUpdateLoading} />;
+  return (
+    <UserProfileForm
+      currentUser={currentUser}
+      onSave={updateUser}
+      isLoading={isUpdateLoading}
+    />
+  );
 }
 
 export default UserProfilePage;
