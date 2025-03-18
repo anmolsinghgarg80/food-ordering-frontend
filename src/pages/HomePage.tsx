@@ -21,6 +21,7 @@ function HomePage() {
         <SearchBar
           placeHolder="Search by city or town"
           onSubmit={handleSearchSubmit}
+          searchQuery={""}
         />
       </div>
       <div className="grid md:grid-cols-2 gap-5">
