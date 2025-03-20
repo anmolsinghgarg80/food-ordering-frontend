@@ -71,9 +71,58 @@ const SearchPage = () => {
 
   if (isLoading) {
     return (
-      <span>
-        <Skeleton className="w-[100px] h-[20px] rounded-full" />
-      </span>
+      <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
+        <div id="cuisines-list">
+          <div className="bg-white rounded-lg p-4">
+            <Skeleton className="h-8 w-full mb-4" />
+            <div className="space-y-2">
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <Skeleton key={item} className="h-6 w-full" />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div id="main-content" className="flex flex-col gap-5">
+          <div className="bg-white rounded-lg p-4">
+            <Skeleton className="h-12 w-full" />
+          </div>
+          <div className="flex justify-between flex-col gap-3 lg:flex-row">
+            <Skeleton className="h-8 w-48" />
+            <Skeleton className="h-8 w-32" />
+          </div>
+
+          {[1, 2, 3].map((item) => (
+            <div
+              key={item}
+              className="bg-white rounded-lg p-4 flex flex-col md:flex-row gap-4"
+            >
+              <Skeleton className="h-32 w-32 rounded-md" />
+              <div className="flex-1 space-y-2">
+                <Skeleton className="h-8 w-3/4" />
+                <Skeleton className="h-4 w-1/2" />
+                <div className="flex gap-2">
+                  <Skeleton className="h-6 w-16" />
+                  <Skeleton className="h-6 w-16" />
+                  <Skeleton className="h-6 w-16" />
+                </div>
+                <Skeleton className="h-4 w-full" />
+              </div>
+              <div className="w-full md:w-32 space-y-2">
+                <Skeleton className="h-8 w-full" />
+                <Skeleton className="h-8 w-full" />
+              </div>
+            </div>
+          ))}
+
+          <div className="flex justify-center">
+            <div className="flex gap-2">
+              {[1, 2, 3].map((item) => (
+                <Skeleton key={item} className="h-10 w-10 rounded" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -130,8 +179,15 @@ const SearchPage = () => {
           />
         </div>
 
-        {results.data.map((restaurant) => (
-          <SearchResultCard restaurant={restaurant} />
+        {results.data.map((restaurant, index) => (
+          <div
+            key={restaurant._id || index}
+            className={`p-4 rounded-lg shadow-sm ${
+              index % 2 === 0 ? "bg-gray-100" : "bg-slate-100"
+            }`}
+          >
+            <SearchResultCard restaurant={restaurant} />
+          </div>
         ))}
         <PaginationSelector
           page={results.pagination.page}

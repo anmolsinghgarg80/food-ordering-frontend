@@ -6,6 +6,9 @@ import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
 import SearchPage from "./pages/SearchPage";
+import DetailPage from "./pages/DetailPage";
+import OrderStatusPage from "./pages/OrderStatusPage";
+import RestaurantsPage from "./pages/RestaurantsPage";
 
 function AppRoutes() {
   return (
@@ -29,6 +32,24 @@ function AppRoutes() {
             </Layout>
           }
         />
+
+        <Route
+          path="/detail/:restaurantId"
+          element={
+            <Layout showHero={false}>
+              <DetailPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/all-restaurants"
+          element={
+            <Layout showHero={false}>
+              <RestaurantsPage />
+            </Layout>
+          }
+        />
+
         <Route element={<ProtectedRoute />}>
           <Route
             path="/User-Profile"
@@ -43,6 +64,14 @@ function AppRoutes() {
             element={
               <Layout>
                 <ManageRestaurantPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/order-status"
+            element={
+              <Layout>
+                <OrderStatusPage />
               </Layout>
             }
           />
