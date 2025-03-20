@@ -80,6 +80,10 @@ export default function ManageRestaurantPage() {
     );
   }
 
+  if(isOrdersLoading) {
+    return <Skeleton className="h-96 w-full rounded-md" />
+  }
+
   return (
     <div>
       <Tabs defaultValue="orders">
