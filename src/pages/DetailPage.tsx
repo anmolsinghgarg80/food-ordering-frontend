@@ -137,6 +137,27 @@ const DetailPage = () => {
       </div>
     );
   }
+  if (isCheckoutLoading) {
+    return (
+      <div className="container mx-auto py-6">
+        <div className="flex flex-col gap-8">
+          <Skeleton className="h-64 w-full rounded-md" />
+          <div className="grid md:grid-cols-[4fr_2fr] gap-5">
+            <div className="flex flex-col gap-4">
+              <Skeleton className="h-24 w-full rounded-md" />
+              <Skeleton className="h-8 w-48 rounded-md" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[1, 2, 3, 4, 5, 6].map((item) => (
+                  <Skeleton key={item} className="h-24 w-full rounded-md" />
+                ))}
+              </div>
+            </div>
+            <Skeleton className="h-96 w-full rounded-md" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!restaurant) {
     return (
